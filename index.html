@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-      <script>
-      $(function(){
-          $.ajax({
-              url: 'https://github.com/IvanSimeyko/Ajax/blob/gh-pages/main.html',
-              success: function () {
-              alert('Some text')
-          }
-          })
-      })
-      </script>
+
 
     <meta charset="UTF-8">
     <title>Ajax by IvanSimeyko</title>
@@ -26,5 +17,16 @@
       <h2 class="project-tagline">знакомство с Ajax</h2>
     </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script>
+      $(function(){
+          $.ajax({
+              url: 'https://github.com/IvanSimeyko/Ajax/blob/gh-pages/main.html',
+              success: function () {
+              alert('Load text')
+          }
+          })
+      })
+      </script>
+
   </body>
 </html>
