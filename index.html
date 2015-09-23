@@ -11,20 +11,51 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Ajax</h1>
-      <h2 class="project-tagline">знакомство с Ajax</h2>
-    </section>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <script>
-        $.ajax({
-              url: 'https://github.com/IvanSimeyko/Ajax/blob/gh-pages/main.html',
-              success: function (){
-                  alert('Load text');
-              }
-        });
+  <body>
+      <section class="page-header">
+          <h1 class="project-name">Ajax</h1>
+          <h2 class="project-tagline">знакомство с Ajax</h2>
+      </section>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+      <script type='text/javascript'>
+        $(function() {
+        // $.ajax(options)
+        var renderPage = function(data){
+            console.log('renderPage', data);
+                  $('.main-content').append(data);
+        };
+
+
+          var iteratePages = function(index, element) {
+              console.log('iteratePages', element);
+              $.ajax({
+                  url: element,
+                  success: renderPage
+              });
+          };
+
+          var afterPagesLoad = function(data, second) {
+              console.log('afterPagesLoad', data);
+              $.each(data, iteratePages);
+          };
+
+          var clickHandler = function() {
+              console.log('clickHandler');
+              $.ajax({
+              dataType: 'json',
+              url: 'https://github.com/IvanSimeyko/Ajax/blob/gh-pages/params.json',
+              success: afterPagesLoad,
+              error: function(data) {
+              console.log(data);
+            }
+          });
+       };
+
+       $('button').on('click', clickHandler);
+    });
 
       </script>
 
