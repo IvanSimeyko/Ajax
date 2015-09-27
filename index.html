@@ -19,13 +19,17 @@
       </section>
 
       <button>click me</button>
+      <button>home</button>
+      <button>todo</button>
+      <button>books</button>
+
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
       <script type='text/javascript'>
         $(function() {
         // $.ajax(options)
-        var renderPage = function(data){
+        /*var renderPage = function(data){
             console.log('renderPage', data);
                   $('.main-content').append(data);
         };
@@ -42,15 +46,15 @@
           var afterPagesLoad = function(data, second) {
               console.log('afterPagesLoad', data);
               $.each(data, iteratePages);
-          };
+          };*/
 
           var clickHandler = function() {
               console.log('clickHandler');
               $.ajax({
-              dataType: 'json',
-              url: 'http://ivansimeyko.github.io/Ajax/params.json',
-              success: afterPagesLoad,
-              error: function(data) {
+              dataType: 'json',    // указываем тип данных, которые ожидаем полулучить от сервера
+              url: 'http://ivansimeyko.github.io/Ajax/params.json',    // адрес запроса
+              success: afterPagesLoad,    // выполняем фукцию при удачном запросе
+              error: function(data) {     // если ошибка то выводим ее
               console.log(data);
             }
           });
